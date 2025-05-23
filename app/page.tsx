@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, ArrowRight, Shield, Wallet, TrendingUp } from 'lucide-react';
-import Image from 'next/image';
+import { ArrowRight, Shield, Wallet, TrendingUp } from 'lucide-react';
+import NumberFlow from '@number-flow/react'
 
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
+        <div className="container flex mx-auto h-16 items-center justify-between">
           <div className="flex items-center gap-2 font-bold">
             <TrendingUp className="h-6 w-6 text-primary" />
             <span>XM Asssets</span>
@@ -31,7 +31,7 @@ export default function Home() {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-24 md:py-32">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:grid-cols-[1fr_500px] items-center">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
@@ -65,7 +65,9 @@ export default function Home() {
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="text-sm font-medium">BTC/USD</div>
-                          <div className="text-2xl font-bold">$63,897.24</div>
+                            <div className="text-2xl font-bold">
+                            <NumberFlow value={63897.24} />
+                            </div>
                           <div className="text-xs text-green-500">+3.24%</div>
                         </div>
                         <div className="h-12 w-12 bg-chart-1/10 rounded-full flex items-center justify-center">
@@ -82,7 +84,7 @@ export default function Home() {
 
         {/* Features Section */}
         <section id="features" className="py-12 md:py-24 bg-muted/50">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Platform Features</h2>
@@ -125,7 +127,7 @@ export default function Home() {
 
         {/* CTA Section */}
         <section className="py-12 md:py-24">
-          <div className="container px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Ready to start trading?</h2>
@@ -144,7 +146,7 @@ export default function Home() {
       </main>
 
       <footer className="border-t py-6 md:py-8">
-        <div className="container flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="container mx-auto flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex items-center gap-2 font-bold">
             <TrendingUp className="h-5 w-5 text-primary" />
             <span>XM Asssets</span>
