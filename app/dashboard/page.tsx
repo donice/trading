@@ -93,7 +93,7 @@ const recentTransactions = [
     amount: 0.05,
     price: 63897.24,
     total: 3194.86,
-    date: '2023-05-15T10:30:00Z',
+    date: '2025-05-15T10:30:00Z',
   },
   {
     id: 2,
@@ -102,7 +102,7 @@ const recentTransactions = [
     amount: 1.2,
     price: 3456.78,
     total: 4148.14,
-    date: '2023-05-14T14:20:00Z',
+    date: '2025-05-14T14:20:00Z',
   },
   {
     id: 3,
@@ -111,7 +111,7 @@ const recentTransactions = [
     amount: 5000,
     price: 1.0,
     total: 5000,
-    date: '2023-05-10T09:15:00Z',
+    date: '2025-05-10T09:15:00Z',
   },
 ];
 
@@ -428,7 +428,7 @@ export default function DashboardPage() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
                       <p className="text-sm font-medium">Monthly Return</p>
-                      <p className="text-muted-foreground text-xs">May 2023</p>
+                      <p className="text-muted-foreground text-xs">May 2025</p>
                     </div>
                     <p className="text-green-500 font-bold">+12.8%</p>
                   </div>

@@ -8,13 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
 } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -36,7 +36,7 @@ export default function AdminUsersPage() {
       name: 'John Doe',
       email: 'john.doe@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-01'),
+      createdAt: new Date('2025-05-01'),
       isVerified: true,
     },
     {
@@ -44,7 +44,7 @@ export default function AdminUsersPage() {
       name: 'Jane Smith',
       email: 'jane.smith@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-05'),
+      createdAt: new Date('2025-05-05'),
       isVerified: true,
     },
     {
@@ -52,7 +52,7 @@ export default function AdminUsersPage() {
       name: 'Michael Brown',
       email: 'michael.brown@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-10'),
+      createdAt: new Date('2025-05-10'),
       isVerified: false,
     },
     {
@@ -60,7 +60,7 @@ export default function AdminUsersPage() {
       name: 'Emily Davis',
       email: 'emily.davis@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-15'),
+      createdAt: new Date('2025-05-15'),
       isVerified: true,
     },
     {
@@ -68,7 +68,7 @@ export default function AdminUsersPage() {
       name: 'Daniel Wilson',
       email: 'daniel.wilson@example.com',
       role: 'admin',
-      createdAt: new Date('2023-04-01'),
+      createdAt: new Date('2025-04-01'),
       isVerified: true,
     },
     {
@@ -76,7 +76,7 @@ export default function AdminUsersPage() {
       name: 'Sarah Johnson',
       email: 'sarah.johnson@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-20'),
+      createdAt: new Date('2025-05-20'),
       isVerified: false,
     },
     {
@@ -84,7 +84,7 @@ export default function AdminUsersPage() {
       name: 'Robert Miller',
       email: 'robert.miller@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-25'),
+      createdAt: new Date('2025-05-25'),
       isVerified: true,
     },
     {
@@ -92,7 +92,7 @@ export default function AdminUsersPage() {
       name: 'Jennifer Taylor',
       email: 'jennifer.taylor@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-27'),
+      createdAt: new Date('2025-05-27'),
       isVerified: true,
     },
     {
@@ -100,7 +100,7 @@ export default function AdminUsersPage() {
       name: 'William Anderson',
       email: 'william.anderson@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-29'),
+      createdAt: new Date('2025-05-29'),
       isVerified: false,
     },
     {
@@ -108,7 +108,7 @@ export default function AdminUsersPage() {
       name: 'Elizabeth Thomas',
       email: 'elizabeth.thomas@example.com',
       role: 'user',
-      createdAt: new Date('2023-05-30'),
+      createdAt: new Date('2025-05-30'),
       isVerified: true,
     },
     {
@@ -116,7 +116,7 @@ export default function AdminUsersPage() {
       name: 'James Jackson',
       email: 'james.jackson@example.com',
       role: 'user',
-      createdAt: new Date('2023-06-01'),
+      createdAt: new Date('2025-06-01'),
       isVerified: true,
     },
     {
@@ -124,7 +124,7 @@ export default function AdminUsersPage() {
       name: 'Patricia White',
       email: 'patricia.white@example.com',
       role: 'user',
-      createdAt: new Date('2023-06-02'),
+      createdAt: new Date('2025-06-02'),
       isVerified: false,
     },
   ];
@@ -139,7 +139,7 @@ export default function AdminUsersPage() {
   }, []);
 
   // Filter users based on search query
-  const filteredUsers = users.filter(user => 
+  const filteredUsers = users.filter(user =>
     user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     user.email.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -152,7 +152,7 @@ export default function AdminUsersPage() {
   return (
     <div className="flex flex-col gap-6">
       <h1 className="text-2xl font-bold">User Management</h1>
-      
+
       <Card>
         <CardHeader>
           <CardTitle>Users</CardTitle>
@@ -175,7 +175,7 @@ export default function AdminUsersPage() {
               />
             </div>
           </div>
-          
+
           {isLoading ? (
             <div className="flex justify-center py-8">
               <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
@@ -230,7 +230,7 @@ export default function AdminUsersPage() {
                   </TableBody>
                 </Table>
               </div>
-              
+
               {filteredUsers.length > itemsPerPage && (
                 <div className="mt-4 flex items-center justify-end space-x-2">
                   <Button
