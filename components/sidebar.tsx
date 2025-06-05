@@ -56,12 +56,12 @@ export function Sidebar({ className }: SidebarProps) {
     //   href: '/dashboard/real-estate',
     //   active: pathname === '/dashboard/real-estate',
     // },
-    // {
-    //   label: 'Deposit',
-    //   icon: Upload,
-    //   href: '/dashboard/deposit',
-    //   active: pathname === '/dashboard/deposit',
-    // },
+    {
+      label: 'Deposit',
+      icon: Upload,
+      href: '/dashboard/deposit',
+      active: pathname === '/dashboard/deposit',
+    },
     // {
     //   label: 'Signals',
     //   icon: Bell,

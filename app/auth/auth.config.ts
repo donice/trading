@@ -1,9 +1,10 @@
-import NextAuth from 'next-auth';
+import { NextAuthOptions, User as NextAuthUser } from "next-auth";
+import NextAuth from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { simpleMongoClient } from '@/lib/mongodb';
 import bcrypt from 'bcryptjs';
 
-const handler = NextAuth({
+export const options = {
   providers: [
     CredentialsProvider({
       name: 'credentials',
@@ -11,12 +12,15 @@ const handler = NextAuth({
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials) {
+      async authorize(credentials): Promise<NextAuthUser | null> {
+        console.log("CREDENTIALS", credentials);
         const client = simpleMongoClient();
         await client.connect();
 
-        const db = client.db(process.env.APP_DB);
+        const db = client.db(process.env.APP_DB ?? "trading");
         const user = await db.collection('users').findOne({ email: credentials?.email });
+
+        console.log("USER", user);
 
         if (!user || !user.password) return null;
 
@@ -27,20 +31,16 @@ const handler = NextAuth({
           id: String(user._id),
           name: user.name,
           email: user.email,
-          verified: true, // Add required properties
-          location: '',   // Add required properties
-        } as { id: string; name: string; email: string; verified: boolean; location: string }; // Explicitly define the User type inline
+          verified: user.verified || false,
+          location: user.location || null,
+        } as NextAuthUser;
       },
     }),
   ],
-  session: {
-    strategy: 'jwt',
-  },
+  session: { strategy: 'jwt' },
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/auth/signin',
-    error: '/auth/signin', // same page for simplicity
+    error: '/auth/signin',
   },
-  secret: process.env.NEXTAUTH_SECRET,
-});
-
-export { handler as GET, handler as POST };
+}

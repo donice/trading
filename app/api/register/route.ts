@@ -34,6 +34,12 @@ export async function POST(req: Request) {
       email,
       password: hashedPassword,
       createdAt: new Date(),
+      balance: {
+        total: 0,
+        btc: 0,
+        eth: 0,
+        usdt: 0,
+      }
     });
 
     return NextResponse.json(

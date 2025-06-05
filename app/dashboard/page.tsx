@@ -7,7 +7,10 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import axiosInstance from '@/lib/axiosInstance';
+import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
+import { useState } from 'react';
 import {
   Area,
   AreaChart,
@@ -120,6 +123,22 @@ export default function DashboardPage() {
   console.log(session);
   const userName = session?.data?.user?.name || 'User';
 
+const [balance, setBalance] = useState({
+  total: 0,
+  btc: 0,
+  eth: 0,
+  usdt: 0,
+})
+
+  const {data} = useQuery({
+    queryKey: ['balance'],
+    queryFn: async () => {
+      const res = await axiosInstance.get('/api/account/balance');
+      setBalance(res.data.data);
+      return res;
+    },
+  })
+
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-2xl font-bold">Welcome back, {userName}</h1>
@@ -130,7 +149,7 @@ export default function DashboardPage() {
             <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$12,500.00</div>
+            <div className="text-2xl font-bold">${balance?.total}</div>
             <p className="text-xs text-muted-foreground">
               +20.1% from last month
             </p>
@@ -141,7 +160,7 @@ export default function DashboardPage() {
             <CardTitle className="text-sm font-medium">BTC Balance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">0.14 BTC</div>
+            <div className="text-2xl font-bold">{balance?.btc} BTC</div>
             <p className="text-xs text-muted-foreground">
               $8,945.61
             </p>
@@ -152,7 +171,7 @@ export default function DashboardPage() {
             <CardTitle className="text-sm font-medium">ETH Balance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1.2 ETH</div>
+            <div className="text-2xl font-bold">{balance?.eth} ETH</div>
             <p className="text-xs text-muted-foreground">
               $4,148.14
             </p>
@@ -163,7 +182,7 @@ export default function DashboardPage() {
             <CardTitle className="text-sm font-medium">USDT Balance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">1,500 USDT</div>
+            <div className="text-2xl font-bold">{balance?.usdt} USDT</div>
             <p className="text-xs text-muted-foreground">
               $1,500.00
             </p>
@@ -345,9 +364,9 @@ export default function DashboardPage() {
                           <p className="text-sm font-medium capitalize">
                             {transaction.type} {transaction.asset}
                           </p>
-                          <p className="text-xs text-muted-foreground">
+                          {/* <p className="text-xs text-muted-foreground">
                             {new Date(transaction.date).toLocaleDateString()}
-                          </p>
+                          </p> */}
                         </div>
                       </div>
                       <div className="text-right">

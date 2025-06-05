@@ -1,8 +1,3 @@
-// import { authOptions } from "@/lib/auth";
-// import NextAuth from "next-auth";
-
-// export default NextAuth(authOptions);
-
 import { NextAuthOptions, User as NextAuthUser } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -46,7 +41,7 @@ const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: '/auth/signin',
-    error: '/auth/signin', // show error on same page
+    error: '/auth/signin',
   },
 });
 
