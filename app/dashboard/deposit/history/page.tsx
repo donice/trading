@@ -146,7 +146,7 @@ export default function TransactionsPage() {
             </PaginationItem>
 
             {Array.from({ length: Math.min(5, totalPages) }).map((_, index) => {
-              let pageNum;
+              let pageNum: any;
               if (totalPages <= 5) {
                 pageNum = index + 1;
               } else if (currentPage <= 3) {

@@ -8,7 +8,7 @@ declare module 'next-auth' {
 	}
 
 	interface User {
-		role: roleForUser;
+		role: any;
 		verified: boolean;
 		location: string | null;
 		communities?: string[];

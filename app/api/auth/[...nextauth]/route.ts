@@ -42,7 +42,6 @@ const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async jwt({ token, user, trigger, session }) {
-      // On initial login
       if (user) {
         token.id = user.id;
         token.name = user.name;
@@ -52,7 +51,6 @@ const handler = NextAuth({
         token.location = user.location;
       }
 
-      // When update() is called from the client
       if (trigger === "update" && session) {
         if (session.name) token.name = session.name;
         if (session.verified !== undefined) token.verified = session.verified;
