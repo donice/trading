@@ -1,4 +1,4 @@
-import { NextAuthOptions, User as NextAuthUser } from "next-auth";
+import { User as NextAuthUser } from "next-auth";
 import NextAuth from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { simpleMongoClient } from '@/lib/mongodb';
@@ -31,6 +31,7 @@ const handler = NextAuth({
           id: String(user._id),
           name: user.name,
           email: user.email,
+          role: user.role || null,
           verified: user.verified || false,
           location: user.location || null,
         } as NextAuthUser;

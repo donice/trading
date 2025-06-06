@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from '@/components/ui/button';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
@@ -16,6 +16,9 @@ import UsdtCode from "./assets/xrp.jpeg";
 import Image, { StaticImageData } from 'next/image';
 import { LuCopy } from "react-icons/lu";
 import toast from 'react-hot-toast';
+import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 type CryptoInfo = {
   address: string;
@@ -65,6 +68,7 @@ const CryptoDepositPage = () => {
     }
   });
 
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState('address');
   const [cryptoAmount, setCryptoAmount] = useState('');
   const [conversionRate, setConversionRate] = useState(0);
@@ -90,8 +94,8 @@ const CryptoDepositPage = () => {
     }
   };
 
-  const onSubmit = async (data: FormData) => {
-    try {
+  const mutateDeposit = useMutation({
+    mutationFn: async (data: FormData) => {
       const submissionData = {
         crypto: data.crypto,
         cryptoAddress: cryptoData[data.crypto].address,
@@ -99,32 +103,26 @@ const CryptoDepositPage = () => {
         cryptoAmount,
         proofFile: data.proof?.[0]?.name
       };
+      const res  = await axios.post('/api/transactions/deposit', submissionData);
+      return res
+    },
 
-      console.log('Deposit Submission:', submissionData);
-
-      const response = await fetch('/api/transactions/deposit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(submissionData),
-      });
-
-      const responseData = await response.json();
-
-      if (!response.ok) {
-        throw new Error(responseData.error || 'Deposit submission failed');
-      }
-
-      console.log('Deposit submission successful:', responseData);
-      toast.success(responseData?.message || 'Deposit submission successful')
-      return responseData;
-
-    } catch (error) {
-      console.error('Deposit submission error:', error);
-      throw error;
+    onSuccess: (responseData) => {
+      const data = responseData?.data;
+      toast.success(data?.message || 'Deposit submission successful');
+      router.push('/dashboard/transactions')
+      return data;
+    },
+    onError: (err) => {
+      console.error("Deposit submission error:", err);
     }
+  })
+
+  const onSubmit = (data: FormData) => {
+    console.log("data", data);
+    mutateDeposit.mutate(data)
   };
+
   const selectedCrypto = form.watch('crypto');
 
   return (

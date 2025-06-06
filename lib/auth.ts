@@ -27,6 +27,7 @@ export const authOptions: NextAuthOptions = {
           id: String(user._id),
           name: user.name,
           email: user.email,
+          role: user.role || null, // Add missing properties
           verified: user.verified || false, // Add missing properties
           location: user.location || null, // Add missing properties
         } as NextAuthUser;

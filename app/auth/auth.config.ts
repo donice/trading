@@ -31,6 +31,7 @@ export const options = {
           id: String(user._id),
           name: user.name,
           email: user.email,
+          role: user.role || null,
           verified: user.verified || false,
           location: user.location || null,
         } as NextAuthUser;

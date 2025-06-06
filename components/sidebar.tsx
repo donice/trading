@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { TrendingUp, LayoutDashboard, Coins as CoinsStacked, BarChart3, Home, Wallet, Upload, Bell, Settings, User, Users, Menu, X } from 'lucide-react';
+import { TrendingUp, LayoutDashboard, Coins as CoinsStacked, BarChart3, BanknoteIcon, Wallet, Upload, Bell, Settings, User, Users, Menu, X } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
@@ -61,6 +61,12 @@ export function Sidebar({ className }: SidebarProps) {
       icon: Upload,
       href: '/dashboard/deposit',
       active: pathname === '/dashboard/deposit',
+    },
+    {
+      label: 'Transactions',
+      icon: BanknoteIcon,
+      href: '/dashboard/transactions',
+      active: pathname === '/dashboard/transactions',
     },
     // {
     //   label: 'Signals',

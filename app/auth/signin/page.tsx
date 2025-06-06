@@ -31,20 +31,15 @@ export default function SignIn() {
 
       if (result?.error) {
         setError('Invalid email or password');
-        setIsLoading(false);
         return;
       }
 
-      router.push('/dashboard');
+      // router.push('/dashboard');
     } catch (error) {
       setError('An unexpected error occurred');
+    } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleGoogleSignIn = () => {
-    setIsLoading(true);
-    signIn('google', { callbackUrl: '/dashboard' });
   };
 
   return (
