@@ -83,6 +83,12 @@ export function Sidebar({ className }: SidebarProps) {
       href: "/dashboard/copy",
       active: pathname === "/dashboard/copy",
     },
+    {
+      label: "Traders",
+      icon: BanknoteIcon,
+      href: "/dashboard/traders",
+      active: pathname === "/traders",
+    },
   ];
 
   const adminRoutes = [
@@ -103,6 +109,12 @@ export function Sidebar({ className }: SidebarProps) {
       icon: BanknoteIcon,
       href: "/admin/transactions",
       active: pathname === "/admin/transactions",
+    },
+    {
+      label: "Manage Traders",
+      icon: BanknoteIcon,
+      href: "/admin/traders",
+      active: pathname === "/admin/traders",
     },
   ];
 

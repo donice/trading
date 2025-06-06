@@ -11,6 +11,7 @@ interface Trader {
   followers: number;
   profitShare: number;
   returnRate: number;
+  image_link: string; // Added image link
   createdAt: Date;
   updatedAt: Date;
 }
@@ -40,18 +41,22 @@ export const POST = async (req: Request) => {
     }
 
     // Validate request body
-    const { name, role, followers, profitShare, returnRate } = await req.json();
-    if (!name || !role || !followers || !profitShare || !returnRate) {
-      return NextResponse.json({ error: "All fields are required" }, { status: 400 });
+    const { name, role, followers, profitShare, returnRate, image_link } = await req.json();
+    if (!name || !role || !followers || !profitShare || !returnRate || !image_link) {
+      return NextResponse.json(
+        { error: "All fields including image link are required" },
+        { status: 400 }
+      );
     }
 
-    // Create new trader
+    // Create new trader with image
     const newTrader: Trader = {
       name,
       role,
       followers: Number(followers),
       profitShare: Number(profitShare),
       returnRate: Number(returnRate),
+      image_link, // Added image link
       createdAt: new Date(),
       updatedAt: new Date()
     };
@@ -70,38 +75,6 @@ export const POST = async (req: Request) => {
     console.error("Create trader error:", err);
     return NextResponse.json(
       { success: false, error: "Failed to create trader" },
-      { status: 500 }
-    );
-  } finally {
-    await client?.close();
-  }
-};
-
-export const GET = async () => {
-  let client;
-  try {
-    client = simpleMongoClient();
-    await client.connect();
-
-    const db = client.db(process.env.APP_DB ?? "trading");
-    const traders = await db.collection("traders")
-      .find()
-      .sort({ createdAt: -1 })
-      .toArray();
-
-    return NextResponse.json({
-      success: true,
-      data: traders.map(trader => ({
-        ...trader,
-        _id: trader._id.toString(),
-        createdAt: trader.createdAt.toISOString()
-      }))
-    });
-
-  } catch (err) {
-    console.error("Get traders error:", err);
-    return NextResponse.json(
-      { success: false, error: "Failed to fetch traders" },
       { status: 500 }
     );
   } finally {
