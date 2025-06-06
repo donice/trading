@@ -40,6 +40,39 @@ const handler = NextAuth({
   ],
   session: { strategy: 'jwt' },
   secret: process.env.NEXTAUTH_SECRET,
+  callbacks: {
+    async jwt({ token, user, trigger, session }) {
+      // On initial login
+      if (user) {
+        token.id = user.id;
+        token.name = user.name;
+        token.email = user.email;
+        token.role = user.role;
+        token.verified = user.verified;
+        token.location = user.location;
+      }
+
+      // When update() is called from the client
+      if (trigger === "update" && session) {
+        if (session.name) token.name = session.name;
+        if (session.verified !== undefined) token.verified = session.verified;
+        if (session.location) token.location = session.location;
+      }
+
+      return token;
+    },
+
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id as string;
+        session.user.name = token.name as string;
+        session.user.email = token.email as string;
+        session.user.role = token.role as string;
+      }
+      return session;
+    },
+  },
+
   pages: {
     signIn: '/auth/signin',
     error: '/auth/signin',

@@ -1,13 +1,28 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { TrendingUp, LayoutDashboard, Coins as CoinsStacked, BarChart3, BanknoteIcon, Wallet, Upload, Bell, Settings, User, Users, Menu, X } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  TrendingUp,
+  LayoutDashboard,
+  Coins as CoinsStacked,
+  BarChart3,
+  BanknoteIcon,
+  Wallet,
+  Upload,
+  Bell,
+  Settings,
+  User,
+  Users,
+  Menu,
+  X,
+  CopyCheckIcon,
+} from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 interface SidebarProps {
   className?: string;
@@ -23,83 +38,71 @@ export function Sidebar({ className }: SidebarProps) {
     setMounted(true);
   }, []);
 
-  const isAdmin = session?.user?.role === 'staff(admin)';
+  const isAdmin = session?.user?.role == "admin";
 
   const routes = [
     {
-      label: 'Dashboard',
+      label: "Dashboard",
       icon: LayoutDashboard,
-      href: '/dashboard',
-      active: pathname === '/dashboard',
+      href: "/dashboard",
+      active: pathname === "/dashboard",
     },
     {
-      label: 'Assets',
+      label: "Assets",
       icon: CoinsStacked,
-      href: '/dashboard/assets',
-      active: pathname === '/dashboard/assets',
+      href: "/dashboard/assets",
+      active: pathname === "/dashboard/assets",
     },
     {
-      label: 'Trade',
+      label: "Trade",
       icon: BarChart3,
-      href: '/dashboard/trade',
-      active: pathname === '/dashboard/trade',
+      href: "/dashboard/trade",
+      active: pathname === "/dashboard/trade",
     },
     {
-      label: 'Market',
+      label: "Market",
       icon: TrendingUp,
-      href: '/dashboard/market',
-      active: pathname === '/dashboard/market',
+      href: "/dashboard/market",
+      active: pathname === "/dashboard/market",
     },
-    // {
-    //   label: 'Real Estate',
-    //   icon: Home,
-    //   href: '/dashboard/real-estate',
-    //   active: pathname === '/dashboard/real-estate',
-    // },
     {
-      label: 'Deposit',
+      label: "Deposit",
       icon: Upload,
-      href: '/dashboard/deposit',
-      active: pathname === '/dashboard/deposit',
+      href: "/dashboard/deposit",
+      active: pathname === "/dashboard/deposit",
     },
     {
-      label: 'Transactions',
+      label: "Deposit History",
       icon: BanknoteIcon,
-      href: '/dashboard/transactions',
-      active: pathname === '/dashboard/transactions',
+      href: "/dashboard/deposit/history",
+      active: pathname === "/dashboard/deposit/history",
     },
-    // {
-    //   label: 'Signals',
-    //   icon: Bell,
-    //   href: '/dashboard/signals',
-    //   active: pathname === '/dashboard/signals',
-    // },
-    // {
-    //   label: 'Settings',
-    //   icon: Settings,
-    //   href: '/dashboard/settings',
-    //   active: pathname === '/dashboard/settings',
-    // },
-    // {
-    //   label: 'Profile',
-    //   icon: User,
-    //   href: '/dashboard/profile',
-    //   active: pathname === '/dashboard/profile',
-    // },
+    {
+      label: "Copy Trade",
+      icon: CopyCheckIcon,
+      href: "/dashboard/copy",
+      active: pathname === "/dashboard/copy",
+    },
   ];
 
   const adminRoutes = [
     {
-      label: 'Users',
+      label: "Users",
       icon: Users,
-      href: '/admin/users',
-      active: pathname === '/admin/users',
+      href: "/admin/users",
+      active: pathname === "/admin/users",
     },
     {
-      label: 'Wallets',
+      label: "Wallets",
       icon: Wallet,
-      href: '/admin/wallets',
-      active: pathname === '/admin/wallets',
+      href: "/admin/wallets",
+      active: pathname === "/admin/wallets",
+    },
+    {
+      label: "Transaction History",
+      icon: BanknoteIcon,
+      href: "/admin/transactions",
+      active: pathname === "/admin/transactions",
     },
   ];
 
@@ -112,7 +115,11 @@ export function Sidebar({ className }: SidebarProps) {
       {/* Mobile Navigation */}
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild className="lg:hidden">
-          <Button variant="outline" size="icon" className="absolute left-4 top-4 z-50">
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute left-4 top-4 z-50"
+          >
             <Menu className="h-5 w-5" />
           </Button>
         </SheetTrigger>
@@ -132,8 +139,8 @@ export function Sidebar({ className }: SidebarProps) {
                     href={route.href}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground',
-                      route.active && 'bg-muted text-foreground'
+                      "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground",
+                      route.active && "bg-muted text-foreground"
                     )}
                   >
                     <route.icon className="h-4 w-4" />
@@ -152,8 +159,8 @@ export function Sidebar({ className }: SidebarProps) {
                         href={route.href}
                         onClick={() => setOpen(false)}
                         className={cn(
-                          'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground',
-                          route.active && 'bg-muted text-foreground'
+                          "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground",
+                          route.active && "bg-muted text-foreground"
                         )}
                       >
                         <route.icon className="h-4 w-4" />
@@ -169,7 +176,7 @@ export function Sidebar({ className }: SidebarProps) {
       </Sheet>
 
       {/* Desktop Navigation */}
-      <div className={cn('hidden border-r bg-background lg:block', className)}>
+      <div className={cn("hidden border-r bg-background lg:block", className)}>
         <div className="flex h-full w-64 flex-col">
           <div className="flex h-14 items-center border-b px-4">
             <Link href="/" className="flex items-center gap-2 font-bold">
@@ -184,8 +191,8 @@ export function Sidebar({ className }: SidebarProps) {
                   key={route.href}
                   href={route.href}
                   className={cn(
-                    'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground',
-                    route.active && 'bg-muted text-foreground'
+                    "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground",
+                    route.active && "bg-muted text-foreground"
                   )}
                 >
                   <route.icon className="h-4 w-4" />
@@ -203,8 +210,8 @@ export function Sidebar({ className }: SidebarProps) {
                       key={route.href}
                       href={route.href}
                       className={cn(
-                        'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground',
-                        route.active && 'bg-muted text-foreground'
+                        "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground",
+                        route.active && "bg-muted text-foreground"
                       )}
                     >
                       <route.icon className="h-4 w-4" />

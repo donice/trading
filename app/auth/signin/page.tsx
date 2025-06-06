@@ -12,8 +12,8 @@ import Link from 'next/link';
 
 export default function SignIn() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('doniceubaru1@gmail.com');
+  const [password, setPassword] = useState('aaazzz');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,7 +34,7 @@ export default function SignIn() {
         return;
       }
 
-      // router.push('/dashboard');
+      router.push('/dashboard');
     } catch (error) {
       setError('An unexpected error occurred');
     } finally {

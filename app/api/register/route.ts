@@ -34,6 +34,7 @@ export async function POST(req: Request) {
       email,
       password: hashedPassword,
       createdAt: new Date(),
+      role: 'user',
       balance: {
         total: 0,
         btc: 0,
