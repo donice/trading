@@ -39,10 +39,10 @@ export default function SignUp() {
     formState: { errors },
   } = useForm<FormData>({
     defaultValues: {
-      name: 'Koalin Kendric',
-      email: 'don@yahoo.com',
-      password: '123456789',
-      confirmPassword: '123456789',
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   });
 

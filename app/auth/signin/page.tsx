@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 export default function SignIn() {
   const router = useRouter();
-  const [email, setEmail] = useState('doniceubaru1@gmail.com');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('aaazzz');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
