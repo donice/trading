@@ -10,7 +10,7 @@ export default function CTA() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">Trade Dashboard</h1>
+      <h1 className="text-xl font-bold">Actions</h1>
 
       <div className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
         <Card
