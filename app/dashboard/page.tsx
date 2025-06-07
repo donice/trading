@@ -21,6 +21,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import CTA from '.';
 
 const portfolioData = [
   {
@@ -143,7 +144,7 @@ const [balance, setBalance] = useState({
     <div className="flex flex-col gap-4">
       <h1 className="text-2xl font-bold">Welcome back, {userName}</h1>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
@@ -189,6 +190,7 @@ const [balance, setBalance] = useState({
           </CardContent>
         </Card>
       </div>
+      <CTA/>
 
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>

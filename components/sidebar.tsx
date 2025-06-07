@@ -78,12 +78,6 @@ export function Sidebar({ className }: SidebarProps) {
       active: pathname === "/dashboard/deposit/history",
     },
     {
-      label: "Copy Trade",
-      icon: CopyCheckIcon,
-      href: "/dashboard/copy",
-      active: pathname === "/dashboard/copy",
-    },
-    {
       label: "Traders",
       icon: BanknoteIcon,
       href: "/dashboard/traders",
