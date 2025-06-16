@@ -20,6 +20,7 @@ import {
 import NumberFlow from "@number-flow/react";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
+import Image from "next/image";
 
 const users = [
   { name: "Michael K.", amount: "$2,450", currency: "BTC" },
@@ -241,7 +242,7 @@ export default function Home() {
                         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                         "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       ].map((img, i) => (
-                        <img
+                        <Image
                           key={i}
                           src={img as string}
                           className="h-8 w-8 rounded-full border-2 border-background"
@@ -334,7 +335,7 @@ export default function Home() {
                 "https://static.coingecko.com/s/coingecko-logo-5683263fd3ea8a4f152dd5f7299acfc5f84ee73955428acff22913b8e59e6c54.svg",
                 "https://www.pngkey.com/png/detail/155-1550175_wall-street-journal-logo-png-wsj-logo-transparent.png",
               ].map((brand, index) => (
-                <img
+                <Image
                   key={index}
                   src={brand}
                   alt={brand}
@@ -353,7 +354,7 @@ export default function Home() {
                 Professional Trading Features
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
-                Everything you need to trade like a professional, whether you're
+                Everything you need to trade like a professional, whether you&#39;re
                 a beginner or an experienced trader.
               </p>
             </div>
@@ -687,7 +688,7 @@ export default function Home() {
                   className="rounded-xl border bg-card p-6 shadow-sm"
                 >
                   <div className="flex items-center gap-3">
-                    <img
+                    <Image
                       src={testimonial.avatar}
                       alt={testimonial.name}
                       className="h-12 w-12 rounded-full"
@@ -700,7 +701,7 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="mt-4 text-muted-foreground">
-                    "{testimonial.content}"
+                  &#34;{testimonial.content}&#34;
                   </p>
                   <div className="mt-4 flex gap-1 text-yellow-500">
                     {[1, 2, 3, 4, 5].map((star) => (

@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Loader2 } from "lucide-react";
+import Image from "next/image";
 
 interface Transaction {
   _id: string;
@@ -140,7 +141,7 @@ export const TransactionDetail = ({ transactionId }: { transactionId: string }) 
             <div className="mt-6">
               <h3 className="text-sm font-medium text-muted-foreground mb-2">Proof</h3>
               <div className="border rounded-md p-4">
-                <img
+                <Image
                   src={`/uploads/${transaction.proofFile}`}
                   alt="Transaction proof"
                   className="max-h-64 object-contain"
