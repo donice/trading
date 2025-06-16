@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
@@ -47,7 +46,7 @@ export default function TradePage() {
       try {
         const response = await fetch('/api/crypto/prices');
         const priceData = await response.json();
-        
+
         // Combine price data with user balances
         const userAssets = priceData.map((crypto: any) => ({
           symbol: crypto.symbol,
@@ -57,7 +56,7 @@ export default function TradePage() {
           value: (mockBalances[crypto.symbol as keyof typeof mockBalances] || 0) * crypto.price,
           change24h: crypto.change24h,
         }));
-        
+
         setAssets(userAssets);
         setIsLoading(false);
       } catch (error) {
@@ -65,7 +64,7 @@ export default function TradePage() {
         setIsLoading(false);
       }
     };
-    
+
     fetchAssets();
   }, []);
 
@@ -74,7 +73,7 @@ export default function TradePage() {
     if (amount && fromAsset && toAsset) {
       const fromPrice = assets.find(a => a.symbol === fromAsset)?.price || 0;
       const toPrice = assets.find(a => a.symbol === toAsset)?.price || 0;
-      
+
       if (fromPrice && toPrice) {
         const valueInUSD = parseFloat(amount) * fromPrice;
         const convertedAmount = valueInUSD / toPrice;
@@ -95,7 +94,7 @@ export default function TradePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!amount || parseFloat(amount) <= 0) {
       toast({
         title: "Invalid amount",
@@ -104,7 +103,7 @@ export default function TradePage() {
       });
       return;
     }
-    
+
     const selectedAsset = assets.find(a => a.symbol === fromAsset);
     if (!selectedAsset || parseFloat(amount) > selectedAsset.balance) {
       toast({
@@ -114,13 +113,13 @@ export default function TradePage() {
       });
       return;
     }
-    
+
     try {
       setIsSubmitting(true);
-      
+
       // In a real app, you would send the trade to the server here
       // For the prototype, we'll simulate a successful trade
-      
+
       setTimeout(() => {
         toast({
           title: "Trade executed!",
@@ -130,7 +129,7 @@ export default function TradePage() {
         setReceiveAmount('0');
         setIsSubmitting(false);
       }, 1500);
-      
+
     } catch (error) {
       console.error('Error executing trade:', error);
       toast({
@@ -145,7 +144,7 @@ export default function TradePage() {
   return (
     <div className="flex flex-col gap-6">
       <h1 className="text-2xl font-bold">Trade</h1>
-      
+
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="col-span-1">
           <CardHeader>
@@ -200,7 +199,7 @@ export default function TradePage() {
                     Balance: {formatCrypto(mockBalances[fromAsset as keyof typeof mockBalances] || 0, fromAsset)}
                   </div>
                 </div>
-                
+
                 <div className="flex justify-center">
                   <Button
                     type="button"
@@ -211,7 +210,7 @@ export default function TradePage() {
                     <ArrowLeftRight className="h-4 w-4" />
                   </Button>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="toAsset">To</Label>
                   <div className="flex gap-2">
@@ -250,13 +249,13 @@ export default function TradePage() {
                     Balance: {formatCrypto(mockBalances[toAsset as keyof typeof mockBalances] || 0, toAsset)}
                   </div>
                 </div>
-                
+
                 <div className="rounded-lg bg-muted p-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Exchange Rate</span>
                     <span>
                       1 {fromAsset} = {(
-                        (assets.find(a => a.symbol === fromAsset)?.price || 0) / 
+                        (assets.find(a => a.symbol === fromAsset)?.price || 0) /
                         (assets.find(a => a.symbol === toAsset)?.price || 1)
                       ).toFixed(6)} {toAsset}
                     </span>
@@ -268,7 +267,7 @@ export default function TradePage() {
                     </div>
                   )}
                 </div>
-                
+
                 <Button type="submit" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? (
                     <>
@@ -283,7 +282,7 @@ export default function TradePage() {
             )}
           </CardContent>
         </Card>
-        
+
         <Card className="col-span-1">
           <CardHeader>
             <CardTitle>Market Rates</CardTitle>
@@ -298,7 +297,7 @@ export default function TradePage() {
               </div>
             ) : (
               <div className="space-y-4">
-                {assets.flatMap((from, i) => 
+                {assets.flatMap((from, i) =>
                   assets.filter((to) => from.symbol !== to.symbol).map((to) => (
                     <div key={`${from.symbol}-${to.symbol}`} className="flex justify-between items-center py-2 border-b last:border-b-0">
                       <div>
