@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -8,30 +8,31 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { formatCurrency, formatCrypto } from '@/lib/utils';
-import { Asset } from '@/lib/models/user';
-import { useToast } from '@/hooks/use-toast';
-import { ArrowLeftRight, RefreshCw } from 'lucide-react';
+} from "@/components/ui/select";
+import { formatCurrency, formatCrypto } from "@/lib/utils";
+import { Asset } from "@/lib/models/user";
+import { useToast } from "@/hooks/use-toast";
+import { ArrowLeftRight, RefreshCw } from "lucide-react";
+import MarketRates from "./MarketRates";
 
 export default function TradePage() {
   const { toast } = useToast();
   const [assets, setAssets] = useState<Asset[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [fromAsset, setFromAsset] = useState<string>('BTC');
-  const [toAsset, setToAsset] = useState<string>('ETH');
-  const [amount, setAmount] = useState<string>('');
-  const [receiveAmount, setReceiveAmount] = useState<string>('0');
+  const [fromAsset, setFromAsset] = useState<string>("BTC");
+  const [toAsset, setToAsset] = useState<string>("ETH");
+  const [amount, setAmount] = useState<string>("");
+  const [receiveAmount, setReceiveAmount] = useState<string>("0");
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   // Mock user balances - in a real app, these would come from the database
@@ -44,23 +45,26 @@ export default function TradePage() {
   useEffect(() => {
     const fetchAssets = async () => {
       try {
-        const response = await fetch('/api/crypto/prices');
+        const response = await fetch("/api/crypto/prices");
         const priceData = await response.json();
 
         // Combine price data with user balances
         const userAssets = priceData.map((crypto: any) => ({
           symbol: crypto.symbol,
           name: crypto.name,
-          balance: mockBalances[crypto.symbol as keyof typeof mockBalances] || 0,
+          balance:
+            mockBalances[crypto.symbol as keyof typeof mockBalances] || 0,
           price: crypto.price,
-          value: (mockBalances[crypto.symbol as keyof typeof mockBalances] || 0) * crypto.price,
+          value:
+            (mockBalances[crypto.symbol as keyof typeof mockBalances] || 0) *
+            crypto.price,
           change24h: crypto.change24h,
         }));
 
         setAssets(userAssets);
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching assets:', error);
+        console.error("Error fetching assets:", error);
         setIsLoading(false);
       }
     };
@@ -71,8 +75,8 @@ export default function TradePage() {
   // Calculate receive amount
   useEffect(() => {
     if (amount && fromAsset && toAsset) {
-      const fromPrice = assets.find(a => a.symbol === fromAsset)?.price || 0;
-      const toPrice = assets.find(a => a.symbol === toAsset)?.price || 0;
+      const fromPrice = assets.find((a) => a.symbol === fromAsset)?.price || 0;
+      const toPrice = assets.find((a) => a.symbol === toAsset)?.price || 0;
 
       if (fromPrice && toPrice) {
         const valueInUSD = parseFloat(amount) * fromPrice;
@@ -80,7 +84,7 @@ export default function TradePage() {
         setReceiveAmount(convertedAmount.toFixed(8));
       }
     } else {
-      setReceiveAmount('0');
+      setReceiveAmount("0");
     }
   }, [amount, fromAsset, toAsset, assets]);
 
@@ -88,8 +92,8 @@ export default function TradePage() {
     const temp = fromAsset;
     setFromAsset(toAsset);
     setToAsset(temp);
-    setAmount('');
-    setReceiveAmount('0');
+    setAmount("");
+    setReceiveAmount("0");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -104,7 +108,7 @@ export default function TradePage() {
       return;
     }
 
-    const selectedAsset = assets.find(a => a.symbol === fromAsset);
+    const selectedAsset = assets.find((a) => a.symbol === fromAsset);
     if (!selectedAsset || parseFloat(amount) > selectedAsset.balance) {
       toast({
         title: "Insufficient balance",
@@ -125,16 +129,16 @@ export default function TradePage() {
           title: "Trade executed!",
           description: `Successfully traded ${amount} ${fromAsset} for ${receiveAmount} ${toAsset}.`,
         });
-        setAmount('');
-        setReceiveAmount('0');
+        setAmount("");
+        setReceiveAmount("0");
         setIsSubmitting(false);
       }, 1500);
-
     } catch (error) {
-      console.error('Error executing trade:', error);
+      console.error("Error executing trade:", error);
       toast({
         title: "Trade failed",
-        description: "There was an error processing your trade. Please try again.",
+        description:
+          "There was an error processing your trade. Please try again.",
         variant: "destructive",
       });
       setIsSubmitting(false);
@@ -196,7 +200,11 @@ export default function TradePage() {
                     </div>
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Balance: {formatCrypto(mockBalances[fromAsset as keyof typeof mockBalances] || 0, fromAsset)}
+                    Balance:{" "}
+                    {formatCrypto(
+                      mockBalances[fromAsset as keyof typeof mockBalances] || 0,
+                      fromAsset
+                    )}
                   </div>
                 </div>
 
@@ -246,7 +254,11 @@ export default function TradePage() {
                     </div>
                   </div>
                   <div className="text-xs text-muted-foreground">
-                    Balance: {formatCrypto(mockBalances[toAsset as keyof typeof mockBalances] || 0, toAsset)}
+                    Balance:{" "}
+                    {formatCrypto(
+                      mockBalances[toAsset as keyof typeof mockBalances] || 0,
+                      toAsset
+                    )}
                   </div>
                 </div>
 
@@ -254,28 +266,41 @@ export default function TradePage() {
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Exchange Rate</span>
                     <span>
-                      1 {fromAsset} = {(
-                        (assets.find(a => a.symbol === fromAsset)?.price || 0) /
-                        (assets.find(a => a.symbol === toAsset)?.price || 1)
-                      ).toFixed(6)} {toAsset}
+                      1 {fromAsset} ={" "}
+                      {(
+                        (assets.find((a) => a.symbol === fromAsset)?.price ||
+                          0) /
+                        (assets.find((a) => a.symbol === toAsset)?.price || 1)
+                      ).toFixed(6)}{" "}
+                      {toAsset}
                     </span>
                   </div>
                   {amount && (
                     <div className="mt-2 flex justify-between">
                       <span className="text-muted-foreground">You Pay</span>
-                      <span>{formatCurrency(parseFloat(amount) * (assets.find(a => a.symbol === fromAsset)?.price || 0))}</span>
+                      <span>
+                        {formatCurrency(
+                          parseFloat(amount) *
+                            (assets.find((a) => a.symbol === fromAsset)
+                              ?.price || 0)
+                        )}
+                      </span>
                     </div>
                   )}
                 </div>
 
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={isSubmitting}
+                >
                   {isSubmitting ? (
                     <>
                       <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
                       Processing...
                     </>
                   ) : (
-                    'Trade Now'
+                    "Trade Now"
                   )}
                 </Button>
               </form>
@@ -283,46 +308,7 @@ export default function TradePage() {
           </CardContent>
         </Card>
 
-        <Card className="col-span-1">
-          <CardHeader>
-            <CardTitle>Market Rates</CardTitle>
-            <CardDescription>
-              Current exchange rates between assets
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            {isLoading ? (
-              <div className="flex justify-center py-8">
-                <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {assets.flatMap((from, i) =>
-                  assets.filter((to) => from.symbol !== to.symbol).map((to) => (
-                    <div key={`${from.symbol}-${to.symbol}`} className="flex justify-between items-center py-2 border-b last:border-b-0">
-                      <div>
-                        <span className="font-medium">{from.symbol}/{to.symbol}</span>
-                      </div>
-                      <div className="text-right">
-                        <div className="font-semibold">
-                          {(from.price / to.price).toFixed(6)}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          1 {from.symbol} = {(from.price / to.price).toFixed(6)} {to.symbol}
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                )}
-              </div>
-            )}
-          </CardContent>
-          <CardFooter className="flex justify-center border-t pt-4">
-            <p className="text-xs text-muted-foreground">
-              Rates are updated in real-time. Trading fees are 0.1% per transaction.
-            </p>
-          </CardFooter>
-        </Card>
+        <MarketRates />
       </div>
     </div>
   );

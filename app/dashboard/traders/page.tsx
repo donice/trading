@@ -74,7 +74,7 @@ export default function TradersPage() {
                 <Image
                   src={trader.image_link}
                   alt={trader.name}
-                  fill
+                  // fill
                   className="object-cover rounded-full"
                   width={100}
                       height={100}
