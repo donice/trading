@@ -110,7 +110,7 @@ const CryptoDepositPage = () => {
     onSuccess: (responseData) => {
       const data = responseData?.data;
       toast.success(data?.message || 'Deposit submission successful');
-      router.push('/dashboard/transactions')
+      router.push('/dashboard/deposit/history')
       return data;
     },
     onError: (err) => {
@@ -197,6 +197,8 @@ const CryptoDepositPage = () => {
                       src={cryptoData[selectedCrypto].qrCode}
                       alt={`${selectedCrypto} QR Code`}
                       className="h-48 w-48"
+                      width={100}
+                      height={100}
                     />
                   </div>
                 </TabsContent>

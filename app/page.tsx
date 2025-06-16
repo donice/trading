@@ -172,30 +172,14 @@ export default function Home() {
           </nav>
           <div className="flex items-center gap-4">
             <Link href="/auth/signin">
-              <Button variant="outline" className="hidden sm:inline-flex">
+              <Button variant="outline" className="inline-flex">
                 Sign In
               </Button>
             </Link>
             <Link href="/auth/signup">
-              <Button className="hidden sm:inline-flex">Get Started</Button>
+              <Button className="inline-flex">Get Started</Button>
             </Link>
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <line x1="3" x2="21" y1="6" y2="6"></line>
-                <line x1="3" x2="21" y1="12" y2="12"></line>
-                <line x1="3" x2="21" y1="18" y2="18"></line>
-              </svg>
-            </Button>
+
           </div>
         </div>
       </header>
@@ -247,6 +231,8 @@ export default function Home() {
                           src={img as string}
                           className="h-8 w-8 rounded-full border-2 border-background"
                           alt={`User ${i}`}
+                          width={100}
+                          height={100}
                         />
                       ))}
                     </div>
@@ -340,6 +326,8 @@ export default function Home() {
                   src={brand}
                   alt={brand}
                   className="h-8 opacity-60 hover:opacity-100 transition-opacity"
+                  width={100}
+                  height={100}
                 />
               ))}
             </div>
@@ -692,6 +680,8 @@ export default function Home() {
                       src={testimonial.avatar}
                       alt={testimonial.name}
                       className="h-12 w-12 rounded-full"
+                      width={100}
+                      height={100}
                     />
                     <div>
                       <h3 className="font-semibold">{testimonial.name}</h3>

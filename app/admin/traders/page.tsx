@@ -99,7 +99,9 @@ export default function AdminTradersPage() {
                   alt={trader.name}
                   fill
                   className="object-cover rounded-t-lg"
-                />
+                  width={100}
+                  height={100}
+               />
               </div>
               <CardHeader>
                 <CardTitle>{trader.name}</CardTitle>

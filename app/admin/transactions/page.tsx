@@ -135,7 +135,7 @@ export default function AdminTransactionsPage() {
                         </TableCell>
                         <TableCell className="space-x-2">
                           {transaction.status === 'pending' && (
-                            <>
+                            <div className='flex space-x-2'>
                               <Button
                                 size="sm"
                                 onClick={() => updateTransactionStatus(transaction._id, 'completed')}
@@ -159,7 +159,7 @@ export default function AdminTransactionsPage() {
                                   'Reject'
                                 )}
                               </Button>
-                            </>
+                            </div>
                           )}
                         </TableCell>
                       </TableRow>

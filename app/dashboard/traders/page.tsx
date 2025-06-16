@@ -76,6 +76,8 @@ export default function TradersPage() {
                   alt={trader.name}
                   fill
                   className="object-cover rounded-full"
+                  width={100}
+                      height={100}
                 />
               </div>
               <div className="flex-1 p-4">

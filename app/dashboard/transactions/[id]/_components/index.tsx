@@ -1,10 +1,5 @@
 "use client";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
@@ -21,12 +16,16 @@ interface Transaction {
   usdAmount: number;
   walletAddress: string;
   proofFile: string;
-  status: 'pending' | 'completed' | 'failed';
+  status: "pending" | "completed" | "failed";
   createdAt: string;
   updatedAt: string;
 }
 
-export const TransactionDetail = ({ transactionId }: { transactionId: string }) => {
+export const TransactionDetail = ({
+  transactionId,
+}: {
+  transactionId: string;
+}) => {
   const [transaction, setTransaction] = useState<Transaction | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -35,18 +34,20 @@ export const TransactionDetail = ({ transactionId }: { transactionId: string }) 
   useEffect(() => {
     const fetchTransaction = async () => {
       try {
-        const response = await fetch(`/api/admin/transactions/${transactionId}`);
+        const response = await fetch(
+          `/api/admin/transactions/${transactionId}`
+        );
         if (!response.ok) {
-          throw new Error('Failed to fetch transaction');
+          throw new Error("Failed to fetch transaction");
         }
         const data = await response.json();
         if (data.success) {
           setTransaction(data.data);
         } else {
-          throw new Error(data.error || 'Unknown error');
+          throw new Error(data.error || "Unknown error");
         }
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error occurred');
+        setError(err instanceof Error ? err.message : "Unknown error occurred");
       } finally {
         setLoading(false);
       }
@@ -87,9 +88,9 @@ export const TransactionDetail = ({ transactionId }: { transactionId: string }) 
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'completed':
+      case "completed":
         return <Badge className="bg-green-500">{status}</Badge>;
-      case 'failed':
+      case "failed":
         return <Badge className="bg-red-500">{status}</Badge>;
       default:
         return <Badge className="bg-yellow-500">{status}</Badge>;
@@ -109,29 +110,47 @@ export const TransactionDetail = ({ transactionId }: { transactionId: string }) 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground">User</h3>
-                <p>{transaction.userName} ({transaction.userEmail})</p>
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  User
+                </h3>
+                <p>
+                  {transaction.userName} ({transaction.userEmail})
+                </p>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground">Crypto</h3>
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  Crypto
+                </h3>
                 <p>{transaction.cryptoType}</p>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground">Amount</h3>
-                <p>{transaction.cryptoAmount} {transaction.cryptoType}</p>
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  Amount
+                </h3>
+                <p>
+                  {transaction.cryptoAmount} {transaction.cryptoType}
+                </p>
               </div>
             </div>
             <div className="space-y-4">
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground">USD Value</h3>
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  USD Value
+                </h3>
                 <p>${transaction.usdAmount.toFixed(2)}</p>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground">Wallet Address</h3>
-                <p className="font-mono break-all">{transaction.walletAddress}</p>
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  Wallet Address
+                </h3>
+                <p className="font-mono break-all">
+                  {transaction.walletAddress}
+                </p>
               </div>
               <div>
-                <h3 className="text-sm font-medium text-muted-foreground">Date</h3>
+                <h3 className="text-sm font-medium text-muted-foreground">
+                  Date
+                </h3>
                 <p>{new Date(transaction.createdAt).toLocaleString()}</p>
               </div>
             </div>
@@ -139,12 +158,16 @@ export const TransactionDetail = ({ transactionId }: { transactionId: string }) 
 
           {transaction.proofFile && (
             <div className="mt-6">
-              <h3 className="text-sm font-medium text-muted-foreground mb-2">Proof</h3>
+              <h3 className="text-sm font-medium text-muted-foreground mb-2">
+                Proof
+              </h3>
               <div className="border rounded-md p-4">
                 <Image
                   src={`/uploads/${transaction.proofFile}`}
                   alt="Transaction proof"
                   className="max-h-64 object-contain"
+                  width={100}
+                  height={100}
                 />
               </div>
             </div>
@@ -153,9 +176,7 @@ export const TransactionDetail = ({ transactionId }: { transactionId: string }) 
       </Card>
 
       <div className="flex justify-end">
-        <Button onClick={() => router.back()}>
-          Back to Transactions
-        </Button>
+        <Button onClick={() => router.back()}>Back to Transactions</Button>
       </div>
     </div>
   );
