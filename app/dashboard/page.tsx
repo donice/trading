@@ -22,6 +22,7 @@ import {
   YAxis,
 } from 'recharts';
 import CTA from '.';
+import RecentTransactions from './RecentTransactions';
 
 const portfolioData = [
   {
@@ -337,96 +338,7 @@ const [balance, setBalance] = useState({
               </CardContent>
             </Card>
           </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-            <Card className="col-span-4">
-              <CardHeader>
-                <CardTitle>Recent Transactions</CardTitle>
-                <CardDescription>
-                  Your latest activity
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {recentTransactions.map((transaction) => (
-                    <div
-                      key={transaction.id}
-                      className="flex items-center justify-between"
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className={`h-8 w-8 rounded-full flex items-center justify-center ${
-                          transaction.type === 'buy'
-                            ? 'bg-green-500/20 text-green-500'
-                            : transaction.type === 'sell'
-                            ? 'bg-red-500/20 text-red-500'
-                            : 'bg-blue-500/20 text-blue-500'
-                        }`}>
-                          {transaction.type === 'buy' ? '+' : transaction.type === 'sell' ? '-' : '•'}
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium capitalize">
-                            {transaction.type} {transaction.asset}
-                          </p>
-                          {/* <p className="text-xs text-muted-foreground">
-                            {new Date(transaction.date).toLocaleDateString()}
-                          </p> */}
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-sm font-medium">
-                          {transaction.amount} {transaction.asset}
-                        </p>
-                        <p className="text-xs text-muted-foreground">
-                          ${transaction.total.toFixed(2)}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="col-span-3">
-              <CardHeader>
-                <CardTitle>Latest Signals</CardTitle>
-                <CardDescription>
-                  Recent trading opportunities
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="rounded-lg border bg-card p-3">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm font-medium">BTC Breakout</p>
-                      <div className="rounded bg-green-500/20 px-2 py-1 text-xs text-green-500">
-                        Buy
-                      </div>
-                    </div>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Bitcoin looking to test $65,000 resistance level
-                    </p>
-                    <p className="mt-2 text-xs">
-                      <span className="text-muted-foreground">Price: </span>
-                      <span className="font-medium">$63,897.24</span>
-                    </p>
-                  </div>
-                  <div className="rounded-lg border bg-card p-3">
-                    <div className="flex items-center justify-between">
-                      <p className="text-sm font-medium">ETH Support</p>
-                      <div className="rounded bg-green-500/20 px-2 py-1 text-xs text-green-500">
-                        Buy
-                      </div>
-                    </div>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      Ethereum holding strong at $3,400 support
-                    </p>
-                    <p className="mt-2 text-xs">
-                      <span className="text-muted-foreground">Price: </span>
-                      <span className="font-medium">$3,456.78</span>
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          <RecentTransactions />
         </TabsContent>
         <TabsContent value="analytics" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
