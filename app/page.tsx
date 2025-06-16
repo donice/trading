@@ -87,21 +87,21 @@ const testimonials = [
     role: "Professional Trader",
     content:
       "The platform's advanced charting tools and fast execution have transformed my trading strategy.",
-    avatar: "/avatars/1.jpg",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "Maria Garcia",
     role: "Crypto Investor",
     content:
       "I've tried many exchanges, but none match the security and ease of use of this platform.",
-    avatar: "/avatars/2.jpg",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     name: "James Wilson",
     role: "Institutional Client",
     content:
       "The API integration and liquidity options make this our preferred trading venue.",
-    avatar: "/avatars/3.jpg",
+    avatar: "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
@@ -122,7 +122,7 @@ export default function Home() {
           position: "bottom-right",
         }
       );
-    }, 180000); // 3 minutes
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -239,7 +239,6 @@ export default function Home() {
                         "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                         "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                        ,
                         "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                       ].map((img, i) => (
                         <img
@@ -324,19 +323,24 @@ export default function Home() {
         </section>
 
         {/* Trust Badges */}
-        <section className="py-8 bg-muted/30">
+        <section className="py-8 bg-white">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-              {["forbes", "bloomberg", "https://commons.wikimedia.org/wiki/File:CoinDesk_logo.svg", "techcrunch", "wsj"].map(
-                (brand) => (
-                  <img
-                    key={brand}
-                    src={brand}
-                    alt={brand}
-                    className="h-8 opacity-60 hover:opacity-100 transition-opacity"
-                  />
-                )
-              )}
+              {[
+                "https://banner2.cleanpng.com/20180611/zsb/aa8ovtjoy.webp",
+                "https://e7.pngegg.com/pngimages/727/671/png-clipart-bloomberg-round-logo-icons-logos-emojis-iconic-brands.png",
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/CoinDesk_logo.svg/1024px-CoinDesk_logo.svg.png",
+                "https://e7.pngegg.com/pngimages/669/74/png-clipart-tc-techcrunch-logo-illustration-techcrunch-logo-icons-logos-emojis-iconic-brands.png",
+                "https://static.coingecko.com/s/coingecko-logo-5683263fd3ea8a4f152dd5f7299acfc5f84ee73955428acff22913b8e59e6c54.svg",
+                "https://www.pngkey.com/png/detail/155-1550175_wall-street-journal-logo-png-wsj-logo-transparent.png",
+              ].map((brand, index) => (
+                <img
+                  key={index}
+                  src={brand}
+                  alt={brand}
+                  className="h-8 opacity-60 hover:opacity-100 transition-opacity"
+                />
+              ))}
             </div>
           </div>
         </section>
