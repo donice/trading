@@ -143,7 +143,7 @@ export default function TradePage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold">Trade</h1>
+      <h1 className="text-2xl font-semibold">Trade</h1>
 
       <div className="grid gap-4 md:grid-cols-2">
         <Card className="col-span-1">

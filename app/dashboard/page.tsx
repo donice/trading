@@ -143,7 +143,7 @@ const [balance, setBalance] = useState({
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">Welcome back, {userName}</h1>
+      <h1 className="text-2xl font-semibold">Welcome back, {userName}</h1>
 
       <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
         <Card>
@@ -151,7 +151,7 @@ const [balance, setBalance] = useState({
             <CardTitle className="text-sm font-medium">Total Balance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">${balance?.total}</div>
+            <div className="text-2xl font-semibold">${balance?.total}</div>
             <p className="text-xs text-muted-foreground">
               +20.1% from last month
             </p>
@@ -162,7 +162,7 @@ const [balance, setBalance] = useState({
             <CardTitle className="text-sm font-medium">BTC Balance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{balance?.btc} BTC</div>
+            <div className="text-2xl font-semibold">{balance?.btc} BTC</div>
             <p className="text-xs text-muted-foreground">
               $8,945.61
             </p>
@@ -173,7 +173,7 @@ const [balance, setBalance] = useState({
             <CardTitle className="text-sm font-medium">ETH Balance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{balance?.eth} ETH</div>
+            <div className="text-2xl font-semibold">{balance?.eth} ETH</div>
             <p className="text-xs text-muted-foreground">
               $4,148.14
             </p>
@@ -184,7 +184,7 @@ const [balance, setBalance] = useState({
             <CardTitle className="text-sm font-medium">USDT Balance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{balance?.usdt} USDT</div>
+            <div className="text-2xl font-semibold">{balance?.usdt} USDT</div>
             <p className="text-xs text-muted-foreground">
               $1,500.00
             </p>
@@ -245,7 +245,7 @@ const [balance, setBalance] = useState({
                                   <span className="text-[0.70rem] uppercase text-muted-foreground">
                                     Month
                                   </span>
-                                  <span className="font-bold text-muted-foreground">
+                                  <span className="font-semibold text-muted-foreground">
                                     {payload[0].payload.name}
                                   </span>
                                 </div>
@@ -253,7 +253,7 @@ const [balance, setBalance] = useState({
                                   <span className="text-[0.70rem] uppercase text-muted-foreground">
                                     Value
                                   </span>
-                                  <span className="font-bold">
+                                  <span className="font-semibold">
                                     ${payload[0].value}
                                   </span>
                                 </div>
@@ -309,7 +309,7 @@ const [balance, setBalance] = useState({
                                   <span className="text-[0.70rem] uppercase text-muted-foreground">
                                     Asset
                                   </span>
-                                  <span className="font-bold text-muted-foreground">
+                                  <span className="font-semibold text-muted-foreground">
                                     {payload[0].payload.name}
                                   </span>
                                 </div>
@@ -317,7 +317,7 @@ const [balance, setBalance] = useState({
                                   <span className="text-[0.70rem] uppercase text-muted-foreground">
                                     Allocation
                                   </span>
-                                  <span className="font-bold">
+                                  <span className="font-semibold">
                                     {payload[0].value}%
                                   </span>
                                 </div>
@@ -356,14 +356,14 @@ const [balance, setBalance] = useState({
                       <p className="text-sm font-medium">Total Return</p>
                       <p className="text-muted-foreground text-xs">Since inception</p>
                     </div>
-                    <p className="text-green-500 font-bold">+124.5%</p>
+                    <p className="text-green-500 font-semibold">+124.5%</p>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
                       <p className="text-sm font-medium">Monthly Return</p>
                       <p className="text-muted-foreground text-xs">May 2025</p>
                     </div>
-                    <p className="text-green-500 font-bold">+12.8%</p>
+                    <p className="text-green-500 font-semibold">+12.8%</p>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
@@ -371,8 +371,8 @@ const [balance, setBalance] = useState({
                       <p className="text-muted-foreground text-xs">Last 30 days</p>
                     </div>
                     <div className="flex items-center gap-1">
-                      <p className="font-bold">BTC</p>
-                      <p className="text-green-500 font-bold">+18.3%</p>
+                      <p className="font-semibold">BTC</p>
+                      <p className="text-green-500 font-semibold">+18.3%</p>
                     </div>
                   </div>
                 </div>
@@ -391,25 +391,25 @@ const [balance, setBalance] = useState({
                     <div className="space-y-1">
                       <p className="text-sm font-medium">Bitcoin Dominance</p>
                     </div>
-                    <p className="font-bold">46.2%</p>
+                    <p className="font-semibold">46.2%</p>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
                       <p className="text-sm font-medium">Global Market Cap</p>
                     </div>
-                    <p className="font-bold">$2.7T</p>
+                    <p className="font-semibold">$2.7T</p>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
                       <p className="text-sm font-medium">24h Volume</p>
                     </div>
-                    <p className="font-bold">$98.5B</p>
+                    <p className="font-semibold">$98.5B</p>
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="space-y-1">
                       <p className="text-sm font-medium">Fear & Greed Index</p>
                     </div>
-                    <div className="bg-green-500/20 text-green-500 rounded-full px-3 py-1 text-xs font-bold">
+                    <div className="bg-green-500/20 text-green-500 rounded-full px-3 py-1 text-xs font-semibold">
                       75 - Greed
                     </div>
                   </div>

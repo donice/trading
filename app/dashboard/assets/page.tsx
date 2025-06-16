@@ -8,13 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
 } from '@/components/ui/table';
 import { formatCurrency, formatCrypto, formatPercentage } from '@/lib/utils';
 import { Asset } from '@/lib/models/user';
@@ -30,14 +30,14 @@ export default function AssetsPage() {
       try {
         const response = await fetch('/api/crypto/prices');
         const priceData = await response.json();
-        
+
         // Mock user balances - in a real app, these would come from the database
         const mockBalances = {
           BTC: 0.14,
           ETH: 1.2,
           USDT: 1500,
         };
-        
+
         // Combine price data with user balances
         const userAssets = priceData.map((crypto: any) => ({
           symbol: crypto.symbol,
@@ -47,7 +47,7 @@ export default function AssetsPage() {
           value: (mockBalances[crypto.symbol as keyof typeof mockBalances] || 0) * crypto.price,
           change24h: crypto.change24h,
         }));
-        
+
         setAssets(userAssets);
         setIsLoading(false);
       } catch (error) {
@@ -55,28 +55,28 @@ export default function AssetsPage() {
         setIsLoading(false);
       }
     };
-    
+
     fetchAssets();
   }, []);
-  
+
   // Calculate total portfolio value
   const totalValue = assets.reduce((sum, asset) => sum + asset.value, 0);
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold">Your Assets</h1>
-      
+      <h1 className="text-2xl font-semibold">Your Assets</h1>
+
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Value</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{formatCurrency(totalValue)}</div>
+            <div className="text-2xl font-semibold">{formatCurrency(totalValue)}</div>
           </CardContent>
         </Card>
       </div>
-      
+
       <Card>
         <CardHeader>
           <CardTitle>Asset Breakdown</CardTitle>
@@ -106,7 +106,7 @@ export default function AssetsPage() {
                     <TableCell className="font-medium">
                       <div className="flex items-center gap-2">
                         <div className={`h-8 w-8 rounded-full flex items-center justify-center bg-${
-                          asset.symbol === 'BTC' ? 'orange' : 
+                          asset.symbol === 'BTC' ? 'orange' :
                           asset.symbol === 'ETH' ? 'blue' : 'green'
                         }-500/20`}>
                           {asset.symbol.charAt(0)}
@@ -127,7 +127,7 @@ export default function AssetsPage() {
                         ) : (
                           <Minus className="h-4 w-4 text-muted-foreground" />
                         )}
-                        <span className={asset.change24h > 0 ? 'text-green-500' : 
+                        <span className={asset.change24h > 0 ? 'text-green-500' :
                                       asset.change24h < 0 ? 'text-red-500' : 'text-muted-foreground'}>
                           {formatPercentage(asset.change24h)}
                         </span>

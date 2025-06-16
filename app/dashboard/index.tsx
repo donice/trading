@@ -10,7 +10,7 @@ export default function CTA() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-xl font-bold">Actions</h1>
+      <h1 className="text-xl font-semibold">Actions</h1>
 
       <div className="grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-4">
         <Card
@@ -21,7 +21,7 @@ export default function CTA() {
             <p className="text-sm font-medium">Fund Account</p>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-semibold">
               <RiFundsLine className="text-3xl" />
             </div>
           </CardContent>
@@ -34,7 +34,7 @@ export default function CTA() {
             <p className="text-sm font-medium">Copy Traders</p>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-semibold">
               <PiUserSwitch className="text-3xl" />
             </div>
           </CardContent>
@@ -47,7 +47,7 @@ export default function CTA() {
             <p className="text-sm font-medium">Asset Markets</p>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-semibold">
               <TbShoppingBag className="text-3xl" />
             </div>
           </CardContent>
@@ -60,7 +60,7 @@ export default function CTA() {
             <p className="text-sm font-medium">Trading room</p>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-semibold">
               <TbChartCandle className="text-3xl" />
             </div>
           </CardContent>

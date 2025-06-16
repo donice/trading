@@ -84,7 +84,7 @@ export default function AdminUsersPage() {
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold">User Management</h1>
+      <h1 className="text-2xl font-semibold">User Management</h1>
 
       <Card>
         <CardHeader>

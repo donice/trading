@@ -44,14 +44,14 @@ export default function SignIn() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-muted/30 px-4">
-      <Link href="/" className="absolute left-8 top-8 flex items-center gap-2 font-bold">
+      <Link href="/" className="absolute left-8 top-8 flex items-center gap-2 font-semibold">
         <TrendingUp className="h-5 w-5 text-primary" />
         <span>XM Asssets</span>
       </Link>
 
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl font-bold">Sign In</CardTitle>
+          <CardTitle className="text-2xl font-semibold">Sign In</CardTitle>
           <CardDescription>
             Enter your credentials to access your account
           </CardDescription>

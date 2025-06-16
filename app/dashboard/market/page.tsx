@@ -8,13 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow
 } from '@/components/ui/table';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -232,22 +232,22 @@ export default function MarketPage() {
   }, []);
 
   // Filter cryptos based on search query
-  const filteredCryptos = cryptos.filter(crypto => 
+  const filteredCryptos = cryptos.filter(crypto =>
     crypto.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     crypto.symbol.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-2xl font-bold">Market Overview</h1>
-      
+      <h1 className="text-2xl font-semibold">Market Overview</h1>
+
       <div className="grid gap-4 md:grid-cols-3">
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium">Global Market Cap</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$2.7T</div>
+            <div className="text-2xl font-semibold">$2.7T</div>
             <p className="text-xs text-green-500">+1.2% (24h)</p>
           </CardContent>
         </Card>
@@ -256,7 +256,7 @@ export default function MarketPage() {
             <CardTitle className="text-sm font-medium">24h Volume</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">$98.5B</div>
+            <div className="text-2xl font-semibold">$98.5B</div>
             <p className="text-xs text-muted-foreground">-3.5% from yesterday</p>
           </CardContent>
         </Card>
@@ -265,12 +265,12 @@ export default function MarketPage() {
             <CardTitle className="text-sm font-medium">Bitcoin Dominance</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">46.2%</div>
+            <div className="text-2xl font-semibold">46.2%</div>
             <p className="text-xs text-green-500">+0.3% (24h)</p>
           </CardContent>
         </Card>
       </div>
-      
+
       <Card>
         <CardHeader>
           <CardTitle>Cryptocurrency Prices</CardTitle>
@@ -312,7 +312,7 @@ export default function MarketPage() {
                         <TableCell className="font-medium">
                           <div className="flex items-center gap-2">
                             <div className={`h-8 w-8 rounded-full flex items-center justify-center bg-${
-                              crypto.symbol === 'BTC' ? 'orange' : 
+                              crypto.symbol === 'BTC' ? 'orange' :
                               crypto.symbol === 'ETH' ? 'blue' : 'green'
                             }-500/20`}>
                               {crypto.symbol.charAt(0)}
@@ -333,7 +333,7 @@ export default function MarketPage() {
                             ) : (
                               <Minus className="h-4 w-4 text-muted-foreground" />
                             )}
-                            <span className={crypto.change24h > 0 ? 'text-green-500' : 
+                            <span className={crypto.change24h > 0 ? 'text-green-500' :
                                           crypto.change24h < 0 ? 'text-red-500' : 'text-muted-foreground'}>
                               {formatPercentage(crypto.change24h)}
                             </span>

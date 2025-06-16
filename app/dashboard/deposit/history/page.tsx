@@ -73,7 +73,7 @@ export default function TransactionsPage() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Deposit History</h1>
+        <h1 className="text-2xl font-semibold">Deposit History</h1>
         <Button onClick={handleDepositClick}>Make Deposit</Button>
       </div>
 

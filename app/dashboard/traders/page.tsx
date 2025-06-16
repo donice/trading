@@ -55,7 +55,7 @@ export default function TradersPage() {
 
   return (
     <div className="container mx-auto">
-      <h1 className="text-3xl font-bold mb-8">Our Expert Traders</h1>
+      <h1 className="text-3xl font-semibold mb-8">Our Expert Traders</h1>
 
       {loading ? (
         <div className="flex justify-center py-12">

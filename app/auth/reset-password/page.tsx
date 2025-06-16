@@ -61,7 +61,7 @@ export default function ResetPassword() {
       <div className="flex min-h-screen flex-col items-center justify-center bg-muted/30 px-4">
         <Card className="w-full max-w-md shadow-lg">
           <CardHeader className="space-y-1 text-center">
-            <CardTitle className="text-2xl font-bold">Invalid Token</CardTitle>
+            <CardTitle className="text-2xl font-semibold">Invalid Token</CardTitle>
             <CardDescription>
               The reset link is invalid or has expired
             </CardDescription>
@@ -80,7 +80,7 @@ export default function ResetPassword() {
     <div className="flex min-h-screen flex-col items-center justify-center bg-muted/30 px-4">
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl font-bold">Reset Password</CardTitle>
+          <CardTitle className="text-2xl font-semibold">Reset Password</CardTitle>
           <CardDescription>
             Enter your new password below
           </CardDescription>

@@ -134,7 +134,7 @@ export default function Home() {
       {/* Navigation */}
       <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex mx-auto h-16 items-center justify-between px-4 sm:px-6">
-          <div className="flex items-center gap-2 font-bold">
+          <div className="flex items-center gap-2 font-semibold">
             <TrendingUp className="h-6 w-6 text-primary" />
             <span className="text-lg">XM Assets Pro</span>
           </div>
@@ -194,7 +194,7 @@ export default function Home() {
                   <span className="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
                     Trusted by 500,000+ traders worldwide
                   </span>
-                  <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+                  <h1 className="text-4xl font-semibold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
                     The Professional{" "}
                     <span className="text-primary">Crypto Trading</span>{" "}
                     Platform
@@ -338,7 +338,7 @@ export default function Home() {
         <section id="features" className="py-20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-5xl">
                 Professional Trading Features
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
@@ -355,7 +355,7 @@ export default function Home() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
                     {feature.icon}
                   </div>
-                  <h3 className="mt-4 text-xl font-bold">{feature.title}</h3>
+                  <h3 className="mt-4 text-xl font-semibold">{feature.title}</h3>
                   <p className="mt-2 text-muted-foreground">
                     {feature.description}
                   </p>
@@ -380,7 +380,7 @@ export default function Home() {
                   <div className="bg-background p-4 h-96 flex items-center justify-center">
                     <div className="text-center">
                       <BarChart2 className="h-12 w-12 mx-auto text-primary" />
-                      <h3 className="mt-4 text-xl font-bold">
+                      <h3 className="mt-4 text-xl font-semibold">
                         Interactive Trading Demo
                       </h3>
                       <p className="mt-2 text-muted-foreground max-w-md">
@@ -393,7 +393,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl">
                   Try Before You Trade
                 </h2>
                 <p className="text-lg text-muted-foreground">
@@ -466,7 +466,7 @@ export default function Home() {
         <section id="markets" className="py-20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-5xl">
                 Global Crypto Markets
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
@@ -575,7 +575,7 @@ export default function Home() {
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">
+                <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl">
                   Enterprise-grade Security
                 </h2>
                 <p className="text-lg text-muted-foreground">
@@ -621,7 +621,7 @@ export default function Home() {
               </div>
               <div className="bg-background rounded-xl border p-8 shadow-lg">
                 <div className="space-y-6">
-                  <h3 className="text-2xl font-bold">Security Checklist</h3>
+                  <h3 className="text-2xl font-semibold">Security Checklist</h3>
                   <div className="space-y-4">
                     {[
                       "Enable Two-Factor Authentication",
@@ -661,7 +661,7 @@ export default function Home() {
         <section id="testimonials" className="py-20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-5xl">
                 Trusted by Traders Worldwide
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
@@ -721,7 +721,7 @@ export default function Home() {
         <section id="pricing" className="py-20 bg-muted/50">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-5xl">
                 Simple, Transparent Pricing
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
@@ -730,10 +730,10 @@ export default function Home() {
             </div>
             <div className="mt-12 grid gap-8 md:grid-cols-3">
               <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <h3 className="text-xl font-bold">Starter</h3>
+                <h3 className="text-xl font-semibold">Starter</h3>
                 <p className="mt-2 text-muted-foreground">For new traders</p>
                 <div className="mt-6">
-                  <span className="text-4xl font-bold">0.20%</span>
+                  <span className="text-4xl font-semibold">0.20%</span>
                   <span className="text-muted-foreground"> / trade</span>
                 </div>
                 <ul className="mt-6 space-y-3">
@@ -794,10 +794,10 @@ export default function Home() {
                 <div className="absolute top-0 right-6 -translate-y-1/2 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-medium">
                   Most Popular
                 </div>
-                <h3 className="text-xl font-bold">Pro</h3>
+                <h3 className="text-xl font-semibold">Pro</h3>
                 <p className="mt-2 text-muted-foreground">For active traders</p>
                 <div className="mt-6">
-                  <span className="text-4xl font-bold">0.10%</span>
+                  <span className="text-4xl font-semibold">0.10%</span>
                   <span className="text-muted-foreground"> / trade</span>
                 </div>
                 <ul className="mt-6 space-y-3">
@@ -869,12 +869,12 @@ export default function Home() {
                 <Button className="mt-8 w-full">Get Started</Button>
               </div>
               <div className="rounded-xl border bg-card p-6 shadow-sm">
-                <h3 className="text-xl font-bold">Institutional</h3>
+                <h3 className="text-xl font-semibold">Institutional</h3>
                 <p className="mt-2 text-muted-foreground">
                   For high-volume traders
                 </p>
                 <div className="mt-6">
-                  <span className="text-4xl font-bold">0.05%</span>
+                  <span className="text-4xl font-semibold">0.05%</span>
                   <span className="text-muted-foreground"> / trade</span>
                 </div>
                 <ul className="mt-6 space-y-3">
@@ -955,7 +955,7 @@ export default function Home() {
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-4xl text-center">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-5xl">
                 Ready to Start Trading?
               </h2>
               <p className="mt-4 text-lg text-primary-foreground/90">
@@ -989,7 +989,7 @@ export default function Home() {
         <section className="py-20">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-center">
+              <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl text-center">
                 Frequently Asked Questions
               </h2>
               <div className="mt-12 space-y-4">
@@ -1056,7 +1056,7 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
             <div>
-              <div className="flex items-center gap-2 font-bold text-lg">
+              <div className="flex items-center gap-2 font-semibold text-lg">
                 <TrendingUp className="h-6 w-6 text-primary" />
                 <span>XM Assets Pro</span>
               </div>

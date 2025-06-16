@@ -128,7 +128,7 @@ const CryptoDepositPage = () => {
   return (
     <div className="mx-auto space-y-6">
 
-        <h1 className="text-2xl font-bold">Deposit Crypto</h1>
+        <h1 className="text-2xl font-semibold">Deposit Crypto</h1>
 
         <Card className='pt-4'>
 
