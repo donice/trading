@@ -1,4 +1,4 @@
-// components/TransactionDetail.tsx
+"use client";
 import {
   Card,
   CardHeader,

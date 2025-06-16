@@ -89,7 +89,7 @@ const RecentTransactions = () => {
             {formattedTransactions.slice(0, 3).map((transaction) => (
               <div
                 key={transaction.id}
-                className="flex items-center justify-between"
+                className="flex items-center justify-between cursor-pointer"
                 onClick={() => router.push(`/dashboard/transactions/${transaction.id}`)}
               >
                 <div className="flex items-center gap-4">
