@@ -555,14 +555,14 @@ export default function Home() {
                           {asset.change}%
                         </td>
                         <td className="whitespace-nowrap px-6 py-4">
-                          $
-                          {(
+                          $ {asset.price * 10000}
+                          {/* {(
                             asset.price *
                             10000 *
                             (1 + Math.random())
                           ).toLocaleString(undefined, {
                             maximumFractionDigits: 0,
-                          })}
+                          })} */}
                         </td>
                         <td className="whitespace-nowrap px-6 py-4 text-right">
                           <Button variant="outline" size="sm">
